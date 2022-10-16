@@ -1,174 +1,225 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Form</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <title>Document</title>
+    <link
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      rel="stylesheet"
+      id="bootstrap-css"
+    />
+    <style>
+      .register .nav-tabs .nav-link:hover {
+        border: none;
+      }
+
+      .text-align {
+        margin-top: -3%;
+        margin-bottom: -9%;
+
+        padding: 10%;
+        margin-left: 30%;
+      }
+
+      .form-new {
+        margin-right: 22%;
+        margin-left: 20%;
+      }
+
+      .register-heading {
+        margin-left: 21%;
+        margin-bottom: 10%;
+        color: #e9ecef;
+      }
+
+      .register-heading h1 {
+        margin-left: 21%;
+        margin-bottom: 10%;
+        color: #e9ecef;
+      }
+
+      .register {
+        background: -webkit-linear-gradient(left, #055a4f, #00c6ff);
+        margin-top: 3%;
+        padding: 3%;
+        border-radius: 2.5rem;
+      }
+
+      .btnSubmit {
+        width: 50%;
+        border-radius: 1rem;
+        padding: 1.5%;
+        color: #fff;
+        background-color: #03612e;
+        border: none;
+        cursor: pointer;
+        margin-right: 6%;
+        color: rgb(246, 246, 252);
+        margin-top: 4%;
+      }
+    </style>
   </head>
-  <body dir="rtl">
-    <!-- <div class="contain">
-      <h1 class="head-form">اسرع للتسجيل قبل قفل العرض</h1>
-      <p class="para-form">اقل مبلغ للاستثمار يعادل ال 2.000 ريال صعودي فقط</p>
-      <form action="" class="form">
-        <label for="" class="label">الاسم الكامل*</label>
-        <br />
-        <input type="text" class="input" />
-        <br />
-        <label for="" class="label">رقم الهاتف*</label>
-        <br />
-        <input type="tel" class="input" />
-        <br />
-        <label for="" class="label">العمر*</label>
-        <br />
-        <input type="text" class="input" />
-        <br />
-        <input type="submit" class="input-but" />
-      </form>
-    </div> -->
-    <form>
-      <h1 class="head-form">اسرع للتسجيل قبل قفل العرض</h1>
-      <p class="para-form">اقل مبلغ للاستثمار يعادل ال 2.000 ريال سعودي فقط</p>
-      <label for="idInstance" class="label">الاسم الكامل</label><br />
-      <input
-        class="input"
-        required
-        type="text"
-        id="idInstance"
-        name="idInstance"
-      /><br />
-      <label for="idInstance" class="label">العمر</label><br />
-      <input
-        class="input"
-        required
-        type="text"
-        id="idInstance1"
-        name="idInstance1"
-      /><br />
-         <label for="idInstance" class="label">المؤهل الدراسي</label><br />
-      <input
-        class="input"
-        required
-        type="text"
-        id="idInstance2"
-        name="idInstance2"
-      /><br />
-      <label for="phoneNumber" class="label">رقم الهاتف</label><br />
-      <input
-        class="input"
-        required
-        type="tel"
-        id="phoneNumber"
-        name="phoneNumber"
-        value=""
-      /><br />
-      <!-- <label for="messageText" class="label">Message:</label><br />
-      <input
-        required
-        type="text"
-        id="messageText"
-        name="messageText"
-        value="Hello world!"
-      /><br /> -->
-    </form>
-    <!-- <p>Press Send Message button to dispatch hello world to phone</p> -->
-    <p style="color: blue" id="resultText"></p>
 
-    <button id="SendWhatsAppBtn" class="button buttonGreen input-but">
-      ارسال رسالة
-    </button>
-    <button id="ReceiveWhatsAppBtn" class="button buttonGreen input-but">
-      تلقى رسالة
-    </button>
-    <script
-      type="text/javascript"
-      src="https://unpkg.com/@green-api/whatsapp-api-client/lib/whatsapp-api-client.min.js"
-    ></script>
+  <body>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div
+            class="tab-pane fade show active text-align form-new"
+            id="home"
+            role="tabpanel"
+            aria-labelledby="home-tab"
+          >
+            <h1 class="head-form">اسرع للتسجيل قبل قفل العرض</h1>
+            <p class="para-form">
+              اقل مبلغ للاستثمار يعادل ال 2.000 ريال سعودي فقط
+            </p>
+            <!-- <h3 class="register-heading text-nowrap"></h3> -->
+            <div class="row register-form">
+              <div class="col-md-12">
+                <form autocomplete="off">
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="Name"
+                      id="name"
+                      class="form-control"
+                      placeholder="الاسم *"
+                      value=""
+                      required=""
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="text"
+                      name="age"
+                      id="age"
+                      class="form-control"
+                      placeholder="العمر*"
+                      value=""
+                      required=""
+                    />
+                  </div>
+                  <div class="form-group">
+                    <input
+                      type="tel"
+                      name="Phone"
+                      id="phone"
+                      class="form-control"
+                      placeholder="رقم الهاتف *"
+                      value=""
+                      required=""
+                    />
+                  </div>
+                  <!-- <div class="form-group">
+                    <input
+                      type="text"
+                      name="Name1"
+                      id="name1"
+                      class="form-control"
+                      placeholder="المؤهل الدراسي*"
+                      value=""
+                      required=""
+                    />
+                  </div> -->
+                  <div class="form-group">
+                    <select class="form-control" id="Qualification">
+                      <option>المؤهل الدراسي</option>
+                      <option>ابتدائي</option>
+                      <option>ثانوية</option>
+                      <option>جامعة</option>
+                    </select>
+                  </div>
+
+                  <div class="form-group">
+                    <input
+                      type="button"
+                      name="submit"
+                      class="btnSubmit btn-block"
+                      onclick="gotowhatsapp()"
+                      value="Submit"
+                    />
+                  </div>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
     <script>
-      document
-        .getElementById("SendWhatsAppBtn")
-        .addEventListener("click", function () {
-          try {
-            const restAPI = whatsAppClient.restAPI({
-              idInstance: document.getElementById("idInstance").value,
-              apiTokenInstance:
-                document.getElementById("apiTokenIsntance").value,
-            });
-            restAPI.message
-              .sendMessage(
-                `${document.getElementById("phoneNumber").value}@c.us`,
-                null,
-                document.getElementById("messageText").value
-              )
-              .then((data) => {
-                console.log(data);
-                document.getElementById("resultText").innerHTML =
-                  "Message was sent successfully. Message id: " +
-                  data.idMessage;
-              })
-              .catch((reason) => {
-                console.error(reason);
-                document.getElementById("resultText").innerHTML =
-                  "Message was not sent. Reason: " +
-                  reason +
-                  ". See logs for details";
-              });
-          } catch (reason) {
-            console.error(reason);
-            document.getElementById("resultText").innerHTML =
-              "Message was not sent. Reason: " +
-              reason +
-              " See logs for details";
-          }
-        });
+      function gotowhatsapp() {
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var age = document.getElementById("age").value;
+        var Qualification = document.getElementById("Qualification").value;
 
-      document
-        .getElementById("ReceiveWhatsAppBtn")
-        .addEventListener("click", function () {
-          try {
-            const restAPI = whatsAppClient.restAPI({
-              idInstance: document.getElementById("idInstance").value,
-              apiTokenInstance:
-                document.getElementById("apiTokenIsntance").value,
-            });
+        var url =
+          "https://wa.me/0503373272?text=" +
+          "Name: " +
+          name +
+          "%0a" +
+          "Phone: " +
+          phone +
+          "%0a" +
+          "age: " +
+          age +
+          "%0a" +
+          "Qualification: " +
+          Qualification;
 
-            restAPI.webhookService
-              .receiveNotification()
-              .then((data) => {
-                console.log(data);
-                if (data.receiptId) {
-                  restAPI.webhookService
-                    .deleteNotification(data.receiptId)
-                    .then(() => {
-                      document.getElementById("resultText").innerHTML =
-                        "Message was received successfully. Message text: " +
-                        JSON.stringify(data.body);
-                    })
-                    .catch((reason) => {
-                      console.error(reason);
-                      document.getElementById("resultText").innerHTML =
-                        "Message was not confirmed. Reason: " +
-                        reason +
-                        ". See logs for details";
-                    });
-                }
-              })
-              .catch((reason) => {
-                console.error(reason);
-                document.getElementById("resultText").innerHTML =
-                  "Message was not received. Reason: " +
-                  reason +
-                  ". See logs for details";
-              });
-          } catch (reason) {
-            console.error(reason);
-            document.getElementById("resultText").innerHTML =
-              "Message was not received. Reason: " +
-              reason +
-              " See logs for details";
-          }
-        });
+        window.open(url, "_blank").focus();
+      }
     </script>
+    <a
+      href="https://wa.me/0503373272?text=Hi%20There!"
+      class="float"
+      style="
+        position: fixed;
+        width: 50px;
+        height: 50px;
+        bottom: 70px;
+        right: 120px;
+        color: #fff;
+        border-radius: 50px;
+        text-align: center;
+        cursor: pointer;
+        box-shadow: 2px 2px 3px #999;
+      "
+    >
+      <img
+        src="https://trickuweb.com/whatsapp.png"
+        alt=""
+        height="60px"
+        width="60px"
+      />
+    </a>
+    <script>
+      function gotowhatsapp() {
+        var name = document.getElementById("name").value;
+        var phone = document.getElementById("phone").value;
+        var age = document.getElementById("age").value;
+        var Qualification = document.getElementById("Qualification").value;
+
+        var url =
+          "https://wa.me/0503373272?text=" +
+          "Name: " +
+          name +
+          "%0a" +
+          "Phone: " +
+          phone +
+          "%0a" +
+          "age: " +
+          age +
+          "%0a" +
+          "Qualification: " +
+          Qualification;
+
+        window.open(url, "_blank").focus();
+      }
+    </script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
   </body>
 </html>
