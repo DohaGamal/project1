@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Form</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body dir="rtl">
+    <!-- <div class="contain">
+      <h1 class="head-form">اسرع للتسجيل قبل قفل العرض</h1>
+      <p class="para-form">اقل مبلغ للاستثمار يعادل ال 2.000 ريال صعودي فقط</p>
+      <form action="" class="form">
+        <label for="" class="label">الاسم الكامل*</label>
+        <br />
+        <input type="text" class="input" />
+        <br />
+        <label for="" class="label">رقم الهاتف*</label>
+        <br />
+        <input type="tel" class="input" />
+        <br />
+        <label for="" class="label">العمر*</label>
+        <br />
+        <input type="text" class="input" />
+        <br />
+        <input type="submit" class="input-but" />
+      </form>
+    </div> -->
+    <form>
+      <h1 class="head-form">اسرع للتسجيل قبل قفل العرض</h1>
+      <p class="para-form">اقل مبلغ للاستثمار يعادل ال 2.000 ريال سعودي فقط</p>
+      <label for="idInstance" class="label">الاسم الكامل</label><br />
+      <input
+        class="input"
+        required
+        type="text"
+        id="idInstance"
+        name="idInstance"
+      /><br />
+      <label for="idInstance" class="label">العمر</label><br />
+      <input
+        class="input"
+        required
+        type="text"
+        id="idInstance1"
+        name="idInstance1"
+      /><br />
+      <label for="phoneNumber" class="label">رقم الهاتف</label><br />
+      <input
+        class="input"
+        required
+        type="tel"
+        id="phoneNumber"
+        name="phoneNumber"
+        value=""
+      /><br />
+      <!-- <label for="messageText" class="label">Message:</label><br />
+      <input
+        required
+        type="text"
+        id="messageText"
+        name="messageText"
+        value="Hello world!"
+      /><br /> -->
+    </form>
+    <!-- <p>Press Send Message button to dispatch hello world to phone</p> -->
+    <p style="color: blue" id="resultText"></p>
+
+    <button id="SendWhatsAppBtn" class="button buttonGreen input-but">
+      ارسال رسالة
+    </button>
+    <button id="ReceiveWhatsAppBtn" class="button buttonGreen input-but">
+      تلقى رسالة
+    </button>
+    <script
+      type="text/javascript"
+      src="https://unpkg.com/@green-api/whatsapp-api-client/lib/whatsapp-api-client.min.js"
+    ></script>
+    <script>
+      document
+        .getElementById("SendWhatsAppBtn")
+        .addEventListener("click", function () {
+          try {
+            const restAPI = whatsAppClient.restAPI({
+              idInstance: document.getElementById("idInstance").value,
+              apiTokenInstance:
+                document.getElementById("apiTokenIsntance").value,
+            });
+            restAPI.message
+              .sendMessage(
+                `${document.getElementById("phoneNumber").value}@c.us`,
+                null,
+                document.getElementById("messageText").value
+              )
+              .then((data) => {
+                console.log(data);
+                document.getElementById("resultText").innerHTML =
+                  "Message was sent successfully. Message id: " +
+                  data.idMessage;
+              })
+              .catch((reason) => {
+                console.error(reason);
+                document.getElementById("resultText").innerHTML =
+                  "Message was not sent. Reason: " +
+                  reason +
+                  ". See logs for details";
+              });
+          } catch (reason) {
+            console.error(reason);
+            document.getElementById("resultText").innerHTML =
+              "Message was not sent. Reason: " +
+              reason +
+              " See logs for details";
+          }
+        });
+
+      document
+        .getElementById("ReceiveWhatsAppBtn")
+        .addEventListener("click", function () {
+          try {
+            const restAPI = whatsAppClient.restAPI({
+              idInstance: document.getElementById("idInstance").value,
+              apiTokenInstance:
+                document.getElementById("apiTokenIsntance").value,
+            });
+
+            restAPI.webhookService
+              .receiveNotification()
+              .then((data) => {
+                console.log(data);
+                if (data.receiptId) {
+                  restAPI.webhookService
+                    .deleteNotification(data.receiptId)
+                    .then(() => {
+                      document.getElementById("resultText").innerHTML =
+                        "Message was received successfully. Message text: " +
+                        JSON.stringify(data.body);
+                    })
+                    .catch((reason) => {
+                      console.error(reason);
+                      document.getElementById("resultText").innerHTML =
+                        "Message was not confirmed. Reason: " +
+                        reason +
+                        ". See logs for details";
+                    });
+                }
+              })
+              .catch((reason) => {
+                console.error(reason);
+                document.getElementById("resultText").innerHTML =
+                  "Message was not received. Reason: " +
+                  reason +
+                  ". See logs for details";
+              });
+          } catch (reason) {
+            console.error(reason);
+            document.getElementById("resultText").innerHTML =
+              "Message was not received. Reason: " +
+              reason +
+              " See logs for details";
+          }
+        });
+    </script>
+  </body>
+</html>

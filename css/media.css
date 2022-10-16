@@ -1,0 +1,52 @@
+/* Extra small devices (phones, 600px and down) */
+@media only screen and (max-width: 600px) {
+  h1.head-title {
+    color: blue;
+    font-size: 23px;
+  }
+  .div-header {
+    display: flex;
+    padding-top: 2em;
+    flex-direction: column;
+    padding-right: 3em;
+  }
+  .customer-review {
+    flex-direction: column;
+  }
+  .customer-reviews {
+    flex-direction: column;
+  }
+  p.para-review {
+    padding-right: 1em;
+  }
+  video {
+    width: 14em;
+  }
+  .contant-registration {
+    display: flex;
+    flex-direction: column;
+  }
+  .pay {
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+/* Small devices (portrait tablets and large phones, 600px and up) */
+@media only screen and (min-width: 600px) {
+  img.img-investment {
+    width: 20em;
+  }
+}
+
+/* Medium devices (landscape tablets, 768px and up) */
+@media only screen and (min-width: 768px) {
+}
+
+/* Large devices (laptops/desktops, 992px and up) */
+@media only screen and (min-width: 992px) {
+}
+
+/* Extra large devices (large laptops and desktops, 1200px and up) */
+@media only screen and (min-width: 1200px) {
+}
